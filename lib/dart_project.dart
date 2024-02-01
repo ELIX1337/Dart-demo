@@ -9,4 +9,5 @@ export 'src/dart_project_base.dart';
 
 class MyDartCore {
   var testValue = 10;
+  var testValue2 = 20;
 }
