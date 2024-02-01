@@ -8,6 +8,5 @@ export 'src/dart_project_base.dart';
 // TODO: Export any libraries intended for clients of this package.
 
 class MyDartCore {
-  var testValue = 10;
-  var testValue2 = 20;
+  var testValue = 20;
 }
