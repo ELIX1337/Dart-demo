@@ -6,3 +6,7 @@ library;
 export 'src/dart_project_base.dart';
 
 // TODO: Export any libraries intended for clients of this package.
+
+class MyDartCore {
+  var testValue = 10;
+}
