@@ -1,0 +1,99 @@
+Конечно, давайте рассмотрим пример кода с новыми требованиями:
+
+1. Обновленный `CommandWidget`:
+
+class CommandWidget extends StatelessWidget {
+  final String commandName;
+  final Function(String) onCommandSelected;
+
+  const CommandWidget({Key? key, required this.commandName, required this.onCommandSelected})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(commandName),
+      onTap: () {
+        onCommandSelected(commandName);
+      },
+    );
+  }
+}
+
+2. Измененный главный экран:
+
+class MyHomePage extends StatelessWidget {
+  final DeviceController deviceController;
+
+  const MyHomePage({Key? key, required this.deviceController}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // Список команд для управления устройством
+    var availableCommands = ['Включить/выключить свет', 'Управление яркостью', 'Воспроизвести звук'];
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Управление устройством'),
+      ),
+      body: ListView.builder(
+        itemCount: availableCommands.length,
+        itemBuilder: (context, index) {
+          return CommandWidget(
+            commandName: availableCommands[index],
+            onCommandSelected: (selectedCommand) {
+              // Вызываем метод управления устройством через ядро
+              deviceController.executeCommand(selectedCommand);
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+
+3. Обновленный `DeviceController`:
+
+class DeviceController {
+  final List<DeviceCommand> _commands;
+  final List<Function(DeviceCommand)> _uiCallbacks = [];
+
+  DeviceController(this._commands);
+
+  void registerUICallback(Function(DeviceCommand) callback) {
+    _uiCallbacks.addAll(_commands);
+    _commands.forEach((command) => callback(command));
+  }
+
+  void executeCommand(String commandName) {
+    var selectedCommand = _commands.firstWhere((command) => command.name == commandName);
+    selectedCommand.execute();
+    _uiCallbacks.forEach((callback) => callback(selectedCommand));
+  }
+
+  // Новые методы для управления светом, яркостью и звуком...
+}
+
+4. Обновленный `DeviceCommandsRepository` с новыми командами:
+
+class DeviceCommandsRepository {
+  List<DeviceCommand> getCommands() {
+    return [
+      LightSwitchCommand(),
+      BrightnessControlCommand(),
+      PlaySoundCommand(),
+    ];
+  }
+}
+
+5. Обновленный `DeviceConnectionManager` с методами для считывания и отправки данных:
+
+class DeviceConnectionManager {
+  // Методы для считывания и отправки данных
+  // ...
+}
+
+Теперь у нас есть новые команды для управления светом, яркостью и звуком. 
+Виджеты на главном экране представляют эти команды, 
+и при их выборе они вызывают соответствующие методы управления устройством через ядро (DeviceController). 
+Это дает нам возможность динамически добавлять новые функциональности, при необходимости.
