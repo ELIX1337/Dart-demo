@@ -36,15 +36,15 @@ class DeviceManager {
     return {};
   }
 
+  Stream<String> receiveData() {
+    return connectionManager.receiveData();
+  }
+
   void connect() {
     connectionManager.connect();
   }
 
   void disconnect() {
     connectionManager.disconnect();
-  }
-
-  Stream<String> receiveData() {
-    return connectionManager.receiveData();
   }
 }
