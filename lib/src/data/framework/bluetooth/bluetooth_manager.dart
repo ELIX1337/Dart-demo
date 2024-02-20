@@ -3,7 +3,7 @@ part of periphy;
 abstract class PeriphyBluetoothManager {
   late Future<bool> isSupported;
 
-  late Stream<BluetoothAdapterState> adapterState;
+  late Stream<PeriphyBluetoothAdapterState> adapterState;
 
   Future startScan();
 
@@ -13,7 +13,7 @@ abstract class PeriphyBluetoothManager {
 }
 
 // Mirror of FlutterBluePlus adapter states
-enum BluetoothAdapterState {
+enum PeriphyBluetoothAdapterState {
   unknown,
   unavailable,
   unauthorized,
