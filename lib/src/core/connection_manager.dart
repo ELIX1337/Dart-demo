@@ -1,4 +1,4 @@
-import '../data/entities/device_command.dart';
+part of periphy;
 
 abstract class ConnectionManager {
   Future<void> connect();

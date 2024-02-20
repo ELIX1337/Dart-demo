@@ -1,7 +1,7 @@
-name: dart_project
+name: periphy
 description: A starting point for Dart libraries or applications.
 version: 1.0.0
-repository: https://github.com/ELIX1337/Dart-demo
+repository: https://github.com/ELIX1337/periphy
 
 environment:
   sdk: ^3.0.6

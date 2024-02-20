@@ -1,6 +1,4 @@
-import 'package:dart_project/core/connection_manager.dart';
-
-import '../data/entities/device_command.dart';
+part of periphy;
 
 class DeviceController {
   final ConnectionManager connectionManager;

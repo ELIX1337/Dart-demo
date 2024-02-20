@@ -1,4 +1,4 @@
-import '../entities/device_command.dart';
+part of periphy;
 
 class DeviceCommandsRepository {
   final List<DeviceCommand> commands;
