@@ -1,9 +1,9 @@
 part of periphy;
 
-abstract class BluetoothService {
+abstract class PeriphyBluetoothService {
   final String uuid;
 
-  final List<BluetoothCharacteristic> characteristics;
+  final List<PeriphyBluetoothCharacteristic> characteristics;
 
-  BluetoothService({required this.uuid, required this.characteristics});
+  PeriphyBluetoothService({required this.uuid, required this.characteristics});
 }

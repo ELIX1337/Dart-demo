@@ -1,19 +1,19 @@
 part of periphy;
 
-abstract class BluetoothDevice {
+abstract class PeriphyBluetoothDevice {
   final String platformName;
 
   final String advName;
 
-  List<BluetoothService>? services;
+  List<PeriphyBluetoothService>? services;
 
-  BluetoothDevice(this.platformName, this.advName);
+  PeriphyBluetoothDevice(this.platformName, this.advName);
 
   Future<void> connect();
 
   Future<void> disconnect();
 
-  Future<List<BluetoothService>> readServices();
+  Future<List<PeriphyBluetoothService>> readServices();
 
-  Future<List<BluetoothCharacteristic>> readCharacteristics();
+  Future<List<PeriphyBluetoothCharacteristic>> readCharacteristics();
 }

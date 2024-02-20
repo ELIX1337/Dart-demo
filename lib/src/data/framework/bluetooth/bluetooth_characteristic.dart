@@ -1,11 +1,12 @@
 part of periphy;
 
-abstract class BluetoothCharacteristic {
+abstract class PeriphyBluetoothCharacteristic {
   final String uuid;
 
   final List<BluetoothCharacteristicProperties> properties;
 
-  BluetoothCharacteristic({required this.uuid, required this.properties});
+  PeriphyBluetoothCharacteristic(
+      {required this.uuid, required this.properties});
 
   void write(bool withResponse);
 

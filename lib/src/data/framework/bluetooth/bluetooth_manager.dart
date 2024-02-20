@@ -1,6 +1,6 @@
 part of periphy;
 
-abstract class BluetoothManager {
+abstract class PeriphyBluetoothManager {
   late Future<bool> isSupported;
 
   late Stream<BluetoothAdapterState> adapterState;
@@ -9,11 +9,7 @@ abstract class BluetoothManager {
 
   Future stopScan();
 
-  Stream<List<BluetoothScanResult>> get scanResult;
-
-  Future<void> connect();
-
-  Future<void> disconnect();
+  Stream<List<PeriphyBluetoothScanResult>> get scanResult;
 }
 
 // Mirror of FlutterBluePlus adapter states
@@ -27,19 +23,19 @@ enum BluetoothAdapterState {
   off
 }
 
-class BluetoothScanResult {
-  final BluetoothDevice device;
-  final AdvertisementData advertisementData;
+class PeriphyBluetoothScanResult {
+  final PeriphyBluetoothDevice device;
+  final PeriphyAdvertisementData advertisementData;
   final int rssi;
 
-  BluetoothScanResult({
+  PeriphyBluetoothScanResult({
     required this.device,
     required this.advertisementData,
     required this.rssi,
   });
 }
 
-abstract class AdvertisementData {
+abstract class PeriphyAdvertisementData {
   final String advName;
   final int? txPowerLevel;
   final bool connectable;
@@ -47,7 +43,7 @@ abstract class AdvertisementData {
   final Map<String, List<int>> serviceData; // key: service uuid
   final List<String> serviceUuids;
 
-  AdvertisementData(
+  PeriphyAdvertisementData(
       {required this.advName,
       required this.txPowerLevel,
       required this.connectable,
